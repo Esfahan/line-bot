@@ -51,6 +51,8 @@ def callback():
     try:
         app.logger.info('loglolog')
         app.logger.info(body)
+        print('logloglog')
+        print(body)
         #handler.handle(body, signature)
         #handler.handle(random.choice(messages), signature)
         #handler.handle('helloのず', signature)
