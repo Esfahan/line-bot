@@ -49,6 +49,7 @@ def callback():
     # handle webhook body
     # 署名を検証し、問題なければhandleに定義されている関数を呼び出す。
     try:
+        app.logger.info('loglolog')
         app.logger.info(body)
         #handler.handle(body, signature)
         #handler.handle(random.choice(messages), signature)
