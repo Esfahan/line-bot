@@ -50,7 +50,7 @@ def callback():
         #handler.handle(body, signature)
         handler.handle(random.choice(messages), signature)
     # 署名検証で失敗した場合、例外を出す。
-    except InvalidSignatureError as 3e:
+    except InvalidSignatureError as e:
         app.logger.info(str(e))
         abort(400)
     # handleの処理を終えればOK
