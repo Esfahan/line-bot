@@ -33,18 +33,8 @@ def callback():
  
     # リクエストボディを取得します。
     body = request.get_data(as_text=True)
+    app.logger.info("Request body: " + body)
 
-    messages = ['なんだよ',
-                'うっせーよ',
-                '寿司でも取って帰らせろ！',
-                '鸛鵲楼に登る！',
-                'やめてぇヤツはやめちまえよ！',
-                '留年してそうなヤツはだいたい友達',
-                '単位なら置きっぱなしてきた厚木に',
-                'はやくぅ']
-    #app.logger.info("Request body: " + body)
-    app.logger.info("Request body: " + random.choice(messages))
- 
     # handle webhook body
     # 署名を検証し、問題なければhandleに定義されている関数を呼び出す。
     try:
@@ -70,7 +60,18 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text)) #ここでオウム返しのメッセージを返します。
+        #TextSendMessage(text=event.message.text)) #ここでオウム返しのメッセージを返します。
+        TextSendMessage(text=nozmon_message()))
+
+def nozmon_message():
+    return random.choice(['なんだよ',
+                          'うっせーよ',
+                          '寿司でも取って帰らせろ！',
+                          '鸛鵲楼に登る！',
+                          'やめてぇヤツはやめちまえよ！',
+                          '留年してそうなヤツはだいたい友達',
+                          '単位なら置きっぱなしてきた厚木に',
+                          'はやくぅ'])
  
 # ポート番号の設定
 if __name__ == "__main__":
