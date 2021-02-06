@@ -49,9 +49,10 @@ def callback():
     # handle webhook body
     # 署名を検証し、問題なければhandleに定義されている関数を呼び出す。
     try:
+        app.logger.info(body)
         #handler.handle(body, signature)
         #handler.handle(random.choice(messages), signature)
-        handler.handle('helloのず', signature)
+        #handler.handle('helloのず', signature)
     # 署名検証で失敗した場合、例外を出す。
     except InvalidSignatureError as e:
         app.logger.info(str(e))
