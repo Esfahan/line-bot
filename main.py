@@ -1,5 +1,5 @@
+# -*- config:utf-8 -*-
 from flask import Flask, request, abort
-import random
  
 from linebot import (
     LineBotApi, WebhookHandler
@@ -11,6 +11,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 import os
+import random
  
 app = Flask(__name__)
  
@@ -49,7 +50,8 @@ def callback():
         #handler.handle(body, signature)
         handler.handle(random.choice(messages), signature)
     # 署名検証で失敗した場合、例外を出す。
-    except InvalidSignatureError:
+    except InvalidSignatureError as 3e:
+        app.logger.info(str(e))
         abort(400)
     # handleの処理を終えればOK
     return 'OK'
