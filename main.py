@@ -33,9 +33,7 @@ def callback():
  
     # リクエストボディを取得します。
     body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
 
-    '''
     messages = ['なんだよ',
                 'うっせーよ',
                 '寿司でも取って帰らせろ！',
@@ -44,21 +42,16 @@ def callback():
                 '留年してそうなヤツはだいたい友達',
                 '単位なら置きっぱなしてきた厚木に',
                 'はやくぅ']
-    '''
+    #app.logger.info("Request body: " + body)
+    app.logger.info("Request body: " + random.choice(messages))
  
     # handle webhook body
     # 署名を検証し、問題なければhandleに定義されている関数を呼び出す。
     try:
-        app.logger.info('loglolog')
-        app.logger.info(body)
-        print('logloglog')
-        print(body)
-        #handler.handle(body, signature)
-        #handler.handle(random.choice(messages), signature)
-        #handler.handle('helloのず', signature)
+        handler.handle(body, signature)
     # 署名検証で失敗した場合、例外を出す。
     except InvalidSignatureError as e:
-        app.logger.info(str(e))
+        print(str(e))
         abort(400)
     # handleの処理を終えればOK
     return 'OK'
