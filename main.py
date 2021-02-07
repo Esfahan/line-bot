@@ -51,17 +51,7 @@ def handle_message(event):
             TextSendMessage(text=nozmon_message()))
 
 def nozmon_message():
-    return random.choice(['なんだよ',
-                          'うっせーよ',
-                          '寿司でも取って帰らせろ！',
-                          '鸛鵲楼に登る！',
-                          'やめてぇヤツはやめちまえよ！',
-                          '留年してそうなヤツはだいたい友達',
-                          '単位なら置きっぱなしてきた厚木に',
-                          'ちょん切っちまうぞ！',
-                          'ウイイレやろうよ',
-                          'マダァ？',
-                          'はやくぅ'])
+    return random.choice(['メッセージ01', 'メッセージ02', 'メッセージ03'])
  
 if __name__ == "__main__":
     #    app.run()
