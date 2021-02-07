@@ -44,7 +44,7 @@ def callback():
 def handle_message(event):
     print(event)
 
-    if random.choice([1,2,3,4,5]) == 1:
+    if random.choice(range(10)) == 1:
         line_bot_api.reply_message(
             event.reply_token,
             #TextSendMessage(text=event.message.text))
